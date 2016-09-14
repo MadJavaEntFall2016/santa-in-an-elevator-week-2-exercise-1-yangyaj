@@ -1,7 +1,10 @@
 package edu.madisoncollege.entjava;
 
+import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +41,27 @@ public class ListTest {
         assertTrue("List missing inserted element", myList.contains(elementToInsert));
     }
 
+    @Test
+    public void remove(){
+        myList.remove(1);
+        assertEquals("Failed to remove", "Item 3", myList.remove(1));
+    }
 
+    @Test
+    public void get(){
+        myList.get(1);
+        assertEquals("Failed to get from myList", "Item 2", myList.get(1));
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void testExceptionMessage() throws IndexOutOfBoundsException {
+        List<Object> list = new ArrayList<Object>();
+
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage("Index: 0, Size: 0");
+        list.get(0); // execution will never get past this line
+    }
 }

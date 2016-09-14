@@ -1,6 +1,19 @@
 package edu.madisoncollege.entjava;
 
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+import com.sun.tools.internal.ws.wsdl.document.jaxws.Exception;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Logger;
+import java.util.*;
+import java.io.*;
+
 /**
  * Created by paulawaite on 9/7/16.
  *
@@ -36,6 +49,24 @@ package edu.madisoncollege.entjava;
  */
 
 public class SantaInAnElevator {
+
+
+    String goUp = "(";
+    String goDown = ")";
+
+    public int findSanta(String s){
+        int floor = 0;
+        String[] allParens = s.split("");
+        for (String parens : allParens) {
+            if (parens.equals(goUp))
+                floor++;
+            else if (parens.equals(goDown))
+                floor--;
+        }
+
+        return floor;
+    }
+
 
 
 }
